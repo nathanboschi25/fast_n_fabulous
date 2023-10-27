@@ -1,30 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 // PUBLIC PAGES
-import PublicLayout from '@/views/public/Layout.vue'
-import AboutPage from '@/views/public/About.vue'
+import * as Public from '@/views/public'
 
 // DASHBOARD PAGES
-import DashboardLayout from '@/views/dashboard/Layout.vue'
+import * as Dashboard from '@/views/dashboard'
 
 const routes = [
   // PUBLIC ROUTES
   {
     path: '/',
     name: 'public',
-    component: PublicLayout,
+    component: Public.PublicLayout,
     children: [
-      {path: '', name: 'about', component: AboutPage}
+      {path: '', name: 'About Fast & Fabulous', component: Public.AboutPage}
     ]
   },
   // DASHBOARD ROUTES
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: DashboardLayout,
-    children: []
+    component: Dashboard.DashboardLayout,
   },
-  
   // UNKNOW ROUTE REDIRECT TO PUBLIC HOME
   {
     path: '/:pathMatch(.*)*',

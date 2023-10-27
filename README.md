@@ -1,4 +1,4 @@
-# fast_n_fabulous
+# Fast & Fabulous event app (frontend)
 
 ## Project setup
 ```
