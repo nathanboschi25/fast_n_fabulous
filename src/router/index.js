@@ -1,19 +1,34 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+
+// PUBLIC PAGES
+import PublicLayout from '@/views/public/Layout.vue'
+import AboutPage from '@/views/public/About.vue'
+
+// DASHBOARD PAGES
+import DashboardLayout from '@/views/dashboard/Layout.vue'
 
 const routes = [
+  // PUBLIC ROUTES
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'public',
+    component: PublicLayout,
+    children: [
+      {path: '', name: 'about', component: AboutPage}
+    ]
   },
+  // DASHBOARD ROUTES
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/dashboard',
+    name: 'dashboard',
+    component: DashboardLayout,
+    children: []
+  },
+  
+  // UNKNOW ROUTE REDIRECT TO PUBLIC HOME
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/'
   }
 ]
 
